@@ -1,0 +1,1700 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "JDPortal",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/CVSubmission/recent": {
+      "get": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CVSubmission/jd/{jobDescriptionId}": {
+      "get": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "parameters": [
+          {
+            "name": "jobDescriptionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CVSubmission/pending": {
+      "get": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CVSubmission": {
+      "post": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CandidateName": {
+                    "type": "string"
+                  },
+                  "CandidateEmail": {
+                    "type": "string"
+                  },
+                  "jobDescriptionID": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                },
+                "CandidateName": {
+                  "style": "form"
+                },
+                "CandidateEmail": {
+                  "style": "form"
+                },
+                "jobDescriptionID": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVSubmission"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVSubmission"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVSubmission"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/CVSubmission/{id}": {
+      "get": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVSubmission"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVSubmission"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CVSubmission"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CVSubmission/{id}/downloadCV": {
+      "get": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CVSubmission/{id}/previewCV": {
+      "get": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/CVSubmission/{id}/review": {
+      "put": {
+        "tags": [
+          "CVSubmission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CVReviewModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CVReviewModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CVReviewModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dashboard/stats": {
+      "get": {
+        "tags": [
+          "Dashboard"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JobDescription": {
+      "get": {
+        "tags": [
+          "JobDescription"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobDescription"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobDescription"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobDescription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "JobDescription"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Description",
+                  "PostedDate",
+                  "Title"
+                ],
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Title": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Requirements": {
+                    "type": "string"
+                  },
+                  "Department": {
+                    "type": "string"
+                  },
+                  "Location": {
+                    "type": "string"
+                  },
+                  "Client": {
+                    "type": "string"
+                  },
+                  "PostedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "LastDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "FilePath": {
+                    "type": "string"
+                  },
+                  "CreatedByUserId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CreatedByUser.FirstName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.LastName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.Department": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.Role": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.CreatedJDs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/JobDescription"
+                    }
+                  },
+                  "CreatedByUser.SubmittedCVs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CVSubmission"
+                    }
+                  },
+                  "CreatedByUser.ReviewedCVs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CVSubmission"
+                    }
+                  },
+                  "CreatedByUser.Notifications": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Notification"
+                    }
+                  },
+                  "CreatedByUser.Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CreatedByUser.UserName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.NormalizedUserName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.Email": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.NormalizedEmail": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.EmailConfirmed": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.PasswordHash": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.SecurityStamp": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.ConcurrencyStamp": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.PhoneNumber": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.PhoneNumberConfirmed": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.TwoFactorEnabled": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.LockoutEnd": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "CreatedByUser.LockoutEnabled": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.AccessFailedCount": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CVSubmissions": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CVSubmission"
+                    }
+                  },
+                  "TotalCVs": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "ReviewedCVs": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                },
+                "Id": {
+                  "style": "form"
+                },
+                "Title": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Requirements": {
+                  "style": "form"
+                },
+                "Department": {
+                  "style": "form"
+                },
+                "Location": {
+                  "style": "form"
+                },
+                "Client": {
+                  "style": "form"
+                },
+                "PostedDate": {
+                  "style": "form"
+                },
+                "LastDate": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "FilePath": {
+                  "style": "form"
+                },
+                "CreatedByUserId": {
+                  "style": "form"
+                },
+                "CreatedByUser.FirstName": {
+                  "style": "form"
+                },
+                "CreatedByUser.LastName": {
+                  "style": "form"
+                },
+                "CreatedByUser.Department": {
+                  "style": "form"
+                },
+                "CreatedByUser.Role": {
+                  "style": "form"
+                },
+                "CreatedByUser.CreatedJDs": {
+                  "style": "form"
+                },
+                "CreatedByUser.SubmittedCVs": {
+                  "style": "form"
+                },
+                "CreatedByUser.ReviewedCVs": {
+                  "style": "form"
+                },
+                "CreatedByUser.Notifications": {
+                  "style": "form"
+                },
+                "CreatedByUser.Id": {
+                  "style": "form"
+                },
+                "CreatedByUser.UserName": {
+                  "style": "form"
+                },
+                "CreatedByUser.NormalizedUserName": {
+                  "style": "form"
+                },
+                "CreatedByUser.Email": {
+                  "style": "form"
+                },
+                "CreatedByUser.NormalizedEmail": {
+                  "style": "form"
+                },
+                "CreatedByUser.EmailConfirmed": {
+                  "style": "form"
+                },
+                "CreatedByUser.PasswordHash": {
+                  "style": "form"
+                },
+                "CreatedByUser.SecurityStamp": {
+                  "style": "form"
+                },
+                "CreatedByUser.ConcurrencyStamp": {
+                  "style": "form"
+                },
+                "CreatedByUser.PhoneNumber": {
+                  "style": "form"
+                },
+                "CreatedByUser.PhoneNumberConfirmed": {
+                  "style": "form"
+                },
+                "CreatedByUser.TwoFactorEnabled": {
+                  "style": "form"
+                },
+                "CreatedByUser.LockoutEnd": {
+                  "style": "form"
+                },
+                "CreatedByUser.LockoutEnabled": {
+                  "style": "form"
+                },
+                "CreatedByUser.AccessFailedCount": {
+                  "style": "form"
+                },
+                "CVSubmissions": {
+                  "style": "form"
+                },
+                "TotalCVs": {
+                  "style": "form"
+                },
+                "ReviewedCVs": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescription"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescription"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescription"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/JobDescription/recent": {
+      "get": {
+        "tags": [
+          "JobDescription"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobDescription"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobDescription"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/JobDescription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/JobDescription/{id}": {
+      "get": {
+        "tags": [
+          "JobDescription"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescription"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescription"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDescription"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "JobDescription"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Description",
+                  "PostedDate",
+                  "Title"
+                ],
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Title": {
+                    "type": "string"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Requirements": {
+                    "type": "string"
+                  },
+                  "Department": {
+                    "type": "string"
+                  },
+                  "Location": {
+                    "type": "string"
+                  },
+                  "Client": {
+                    "type": "string"
+                  },
+                  "PostedDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "LastDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "FilePath": {
+                    "type": "string"
+                  },
+                  "CreatedByUserId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CreatedByUser.FirstName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.LastName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.Department": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.Role": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.CreatedJDs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/JobDescription"
+                    }
+                  },
+                  "CreatedByUser.SubmittedCVs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CVSubmission"
+                    }
+                  },
+                  "CreatedByUser.ReviewedCVs": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CVSubmission"
+                    }
+                  },
+                  "CreatedByUser.Notifications": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Notification"
+                    }
+                  },
+                  "CreatedByUser.Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CreatedByUser.UserName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.NormalizedUserName": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.Email": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.NormalizedEmail": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.EmailConfirmed": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.PasswordHash": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.SecurityStamp": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.ConcurrencyStamp": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.PhoneNumber": {
+                    "type": "string"
+                  },
+                  "CreatedByUser.PhoneNumberConfirmed": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.TwoFactorEnabled": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.LockoutEnd": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "CreatedByUser.LockoutEnabled": {
+                    "type": "boolean"
+                  },
+                  "CreatedByUser.AccessFailedCount": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "CVSubmissions": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/CVSubmission"
+                    }
+                  },
+                  "TotalCVs": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "ReviewedCVs": {
+                    "type": "integer",
+                    "format": "int32"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                },
+                "Id": {
+                  "style": "form"
+                },
+                "Title": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Requirements": {
+                  "style": "form"
+                },
+                "Department": {
+                  "style": "form"
+                },
+                "Location": {
+                  "style": "form"
+                },
+                "Client": {
+                  "style": "form"
+                },
+                "PostedDate": {
+                  "style": "form"
+                },
+                "LastDate": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "FilePath": {
+                  "style": "form"
+                },
+                "CreatedByUserId": {
+                  "style": "form"
+                },
+                "CreatedByUser.FirstName": {
+                  "style": "form"
+                },
+                "CreatedByUser.LastName": {
+                  "style": "form"
+                },
+                "CreatedByUser.Department": {
+                  "style": "form"
+                },
+                "CreatedByUser.Role": {
+                  "style": "form"
+                },
+                "CreatedByUser.CreatedJDs": {
+                  "style": "form"
+                },
+                "CreatedByUser.SubmittedCVs": {
+                  "style": "form"
+                },
+                "CreatedByUser.ReviewedCVs": {
+                  "style": "form"
+                },
+                "CreatedByUser.Notifications": {
+                  "style": "form"
+                },
+                "CreatedByUser.Id": {
+                  "style": "form"
+                },
+                "CreatedByUser.UserName": {
+                  "style": "form"
+                },
+                "CreatedByUser.NormalizedUserName": {
+                  "style": "form"
+                },
+                "CreatedByUser.Email": {
+                  "style": "form"
+                },
+                "CreatedByUser.NormalizedEmail": {
+                  "style": "form"
+                },
+                "CreatedByUser.EmailConfirmed": {
+                  "style": "form"
+                },
+                "CreatedByUser.PasswordHash": {
+                  "style": "form"
+                },
+                "CreatedByUser.SecurityStamp": {
+                  "style": "form"
+                },
+                "CreatedByUser.ConcurrencyStamp": {
+                  "style": "form"
+                },
+                "CreatedByUser.PhoneNumber": {
+                  "style": "form"
+                },
+                "CreatedByUser.PhoneNumberConfirmed": {
+                  "style": "form"
+                },
+                "CreatedByUser.TwoFactorEnabled": {
+                  "style": "form"
+                },
+                "CreatedByUser.LockoutEnd": {
+                  "style": "form"
+                },
+                "CreatedByUser.LockoutEnabled": {
+                  "style": "form"
+                },
+                "CreatedByUser.AccessFailedCount": {
+                  "style": "form"
+                },
+                "CVSubmissions": {
+                  "style": "form"
+                },
+                "TotalCVs": {
+                  "style": "form"
+                },
+                "ReviewedCVs": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "JobDescription"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JobDescription/{id}/cvs": {
+      "get": {
+        "tags": [
+          "JobDescription"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CVSubmission"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/JobDescription/users": {
+      "get": {
+        "tags": [
+          "JobDescription"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationUser"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationUser"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationUser"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Notification": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Notification/unread": {
+      "get": {
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Notification/{id}/read": {
+      "put": {
+        "tags": [
+          "Notification"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Notification/read-all": {
+      "put": {
+        "tags": [
+          "Notification"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/WeatherForecast": {
+      "get": {
+        "tags": [
+          "WeatherForecast"
+        ],
+        "operationId": "GetWeatherForecast",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WeatherForecast"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApplicationUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailConfirmed": {
+            "type": "boolean"
+          },
+          "passwordHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "securityStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "concurrencyStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumberConfirmed": {
+            "type": "boolean"
+          },
+          "twoFactorEnabled": {
+            "type": "boolean"
+          },
+          "lockoutEnd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lockoutEnabled": {
+            "type": "boolean"
+          },
+          "accessFailedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "lastName": {
+            "type": "string",
+            "nullable": true
+          },
+          "department": {
+            "type": "string",
+            "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdJDs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/JobDescription"
+            },
+            "nullable": true
+          },
+          "submittedCVs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CVSubmission"
+            },
+            "nullable": true
+          },
+          "reviewedCVs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CVSubmission"
+            },
+            "nullable": true
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CVReviewModel": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "comments": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CVSubmission": {
+        "required": [
+          "candidateEmail",
+          "candidateName",
+          "cvFilePath",
+          "submissionDate"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "candidateName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "candidateEmail": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "cvFilePath": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "comments": {
+            "type": "string",
+            "nullable": true
+          },
+          "submissionDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "reviewedDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "jobDescriptionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "jobDescription": {
+            "$ref": "#/components/schemas/JobDescription"
+          },
+          "submittedByUserId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "submittedByUser": {
+            "$ref": "#/components/schemas/ApplicationUser"
+          },
+          "reviewedByUserId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "reviewedByUser": {
+            "$ref": "#/components/schemas/ApplicationUser"
+          },
+          "notifications": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "JobDescription": {
+        "required": [
+          "description",
+          "postedDate",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "requirements": {
+            "type": "string",
+            "nullable": true
+          },
+          "department": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "client": {
+            "type": "string",
+            "nullable": true
+          },
+          "postedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "lastDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "filePath": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdByUserId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "createdByUser": {
+            "$ref": "#/components/schemas/ApplicationUser"
+          },
+          "cvSubmissions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CVSubmission"
+            },
+            "nullable": true
+          },
+          "totalCVs": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "reviewedCVs": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Notification": {
+        "required": [
+          "createdDate",
+          "message",
+          "title"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "message": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "notificationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isRead": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "user": {
+            "$ref": "#/components/schemas/ApplicationUser"
+          },
+          "jobDescriptionId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "jobDescription": {
+            "$ref": "#/components/schemas/JobDescription"
+          },
+          "cvSubmissionId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cvSubmission": {
+            "$ref": "#/components/schemas/CVSubmission"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeatherForecast": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "temperatureC": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperatureF": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

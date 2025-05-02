@@ -1,0 +1,6 @@
+@JDPortal_HostAddress = http://localhost:5202
+
+GET {{JDPortal_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

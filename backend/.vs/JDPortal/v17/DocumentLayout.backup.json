@@ -1,0 +1,299 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\controllers\\jobdescriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\controllers\\jobdescriptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\controllers\\cvsubmissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\controllers\\cvsubmissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\models\\jobdescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\models\\jobdescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\models\\cvsubmission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\models\\cvsubmission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\models\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\models\\applicationrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|d:\\anuragtx\\project-bolt-sb1-wvspeech\\project\\backend\\jdportal\\migrations\\20250425091856_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4F8317E0-CACB-47D2-BE75-3D7F06239917}|JDPortal\\JDPortal.csproj|solutionrelative:jdportal\\migrations\\20250425091856_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "JobDescription.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\JobDescription.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Models\\JobDescription.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\JobDescription.cs",
+              "RelativeToolTip": "JDPortal\\Models\\JobDescription.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwBcAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T15:19:16.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "JobDescriptionController.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\JobDescriptionController.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Controllers\\JobDescriptionController.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\JobDescriptionController.cs",
+              "RelativeToolTip": "JDPortal\\Controllers\\JobDescriptionController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAlwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T08:50:37.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "JDPortal\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAUwCUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T15:22:26.321Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Controllers\\NotificationController.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "JDPortal\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAnwBsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T08:50:42.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CVSubmissionController.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\CVSubmissionController.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Controllers\\CVSubmissionController.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\CVSubmissionController.cs",
+              "RelativeToolTip": "JDPortal\\Controllers\\CVSubmissionController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAwwMIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T08:50:06.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "JDPortal\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T08:50:44.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "JDPortal\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-30T15:19:28.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Models\\ApplicationUser.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "JDPortal\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T09:17:06.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Program.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Program.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Program.cs",
+              "RelativeToolTip": "JDPortal\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwBQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T09:08:57.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\appsettings.json",
+              "RelativeDocumentMoniker": "JDPortal\\appsettings.json",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\appsettings.json",
+              "RelativeToolTip": "JDPortal\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-25T08:50:56.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CVSubmission.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\CVSubmission.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Models\\CVSubmission.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\CVSubmission.cs",
+              "RelativeToolTip": "JDPortal\\Models\\CVSubmission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T08:54:48.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "JDPortal\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Properties\\launchSettings.json",
+              "RelativeToolTip": "JDPortal\\Properties\\launchSettings.json",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-29T10:12:58.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ApplicationRole.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\ApplicationRole.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Models\\ApplicationRole.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Models\\ApplicationRole.cs",
+              "RelativeToolTip": "JDPortal\\Models\\ApplicationRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T08:54:41.17Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "20250425091856_InitialCreate.cs",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Migrations\\20250425091856_InitialCreate.cs",
+              "RelativeDocumentMoniker": "JDPortal\\Migrations\\20250425091856_InitialCreate.cs",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\Migrations\\20250425091856_InitialCreate.cs",
+              "RelativeToolTip": "JDPortal\\Migrations\\20250425091856_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-25T09:18:56.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "JDPortal\\appsettings.Development.json",
+              "ToolTip": "D:\\AnuragTX\\project-bolt-sb1-wvspeech\\project\\backend\\JDPortal\\appsettings.Development.json",
+              "RelativeToolTip": "JDPortal\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-25T08:50:59.764Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
