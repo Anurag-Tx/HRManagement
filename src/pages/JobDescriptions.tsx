@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getJobDescriptions, updateJobDescription } from '../services/dashboardService';
-import { deleteJobDescription } from '../services/jobDescriptionService';
+import { getJobDescriptions, updateJobDescription, markJobDescriptionInactive } from '../services/dashboardService';
 import { JobDescriptionData } from '../services/dashboardService';
 import { 
   FileText, 
@@ -64,13 +63,13 @@ const JobDescriptions: React.FC = () => {
 
     try {
       setIsSubmitting(true);
-      await deleteJobDescription(jobToDelete);
+      await markJobDescriptionInactive(jobToDelete);
       await fetchJobDescriptions();
       setIsDeleteConfirmOpen(false);
       setJobToDelete(null);
     } catch (err) {
-      setError('Failed to delete job description');
-      console.error('Error deleting job description:', err);
+      setError('Failed to mark job description as inactive');
+      console.error('Error marking job description as inactive:', err);
     } finally {
       setIsSubmitting(false);
     }
@@ -93,7 +92,7 @@ const JobDescriptions: React.FC = () => {
     }
   };
 
-  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     if (!editingJob) return;
 
     const { name, value } = e.target;
@@ -103,26 +102,30 @@ const JobDescriptions: React.FC = () => {
     }));
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'accepted':
+  const getStatusColor = (status: string, isActive: boolean) => {
+    if (!isActive) return 'bg-gray-100 text-gray-800';
+    
+    switch (status.toLowerCase()) {
+      case 'active':
         return 'bg-green-100 text-green-800';
-      case 'pending':
+      case 'inactive':
         return 'bg-yellow-100 text-yellow-800';
-      case 'rejected':
+      case 'closed':
         return 'bg-red-100 text-red-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
   };
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case 'accepted':
+  const getStatusIcon = (status: string, isActive: boolean) => {
+    if (!isActive) return <XCircle className="h-5 w-5" />;
+    
+    switch (status.toLowerCase()) {
+      case 'active':
         return <CheckCircle className="h-5 w-5" />;
-      case 'pending':
+      case 'inactive':
         return <Clock className="h-5 w-5" />;
-      case 'rejected':
+      case 'closed':
         return <XCircle className="h-5 w-5" />;
       default:
         return <FileText className="h-5 w-5" />;
@@ -144,7 +147,16 @@ const JobDescriptions: React.FC = () => {
   const filteredJobDescriptions = jobDescriptions.filter(jd => {
     const matchesSearch = jd.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          jd.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = statusFilter === 'all' || jd.status.toLowerCase() === statusFilter;
+    
+    let matchesStatus = true;
+    if (statusFilter !== 'all') {
+      if (statusFilter === 'inactive') {
+        matchesStatus = !jd.isActive;
+      } else {
+        matchesStatus = jd.isActive && jd.status.toLowerCase() === statusFilter;
+      }
+    }
+    
     return matchesSearch && matchesStatus;
   });
 
@@ -338,8 +350,8 @@ const JobDescriptions: React.FC = () => {
                 <div className="bg-gray-50 rounded-lg p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold">{editingJob.title}</h3>
-                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(editingJob.status)}`}>
-                      {editingJob.status}
+                    <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(editingJob.status, editingJob.isActive)}`}>
+                      {editingJob.isActive ? editingJob.status : 'Inactive'}
                     </span>
                   </div>
                   <div className="flex items-center text-sm text-gray-500">
@@ -403,42 +415,28 @@ const JobDescriptions: React.FC = () => {
       {/* Delete Confirmation Modal */}
       {isDeleteConfirmOpen && (
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-md w-full">
-            <div className="p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Delete Job Description</h3>
-              <p className="text-gray-500 mb-6">Are you sure you want to delete this job description? This action cannot be undone.</p>
-              <div className="flex justify-end space-x-4">
-                <button
-                  onClick={() => {
-                    setIsDeleteConfirmOpen(false);
-                    setJobToDelete(null);
-                  }}
-                  className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center space-x-2 shadow-sm"
-                >
-                  <X className="h-4 w-4" />
-                  <span>Cancel</span>
-                </button>
-                <button
-                  onClick={handleDeleteConfirm}
-                  disabled={isSubmitting}
-                  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors duration-200 flex items-center space-x-2 shadow-sm"
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center space-x-2">
-                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      <span>Deleting...</span>
-                    </span>
-                  ) : (
-                    <>
-                      <Trash2 className="h-4 w-4" />
-                      <span>Delete</span>
-                    </>
-                  )}
-                </button>
-              </div>
+          <div className="bg-white rounded-lg p-6 max-w-md w-full">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">Confirm Action</h3>
+            <p className="text-gray-500 mb-6">
+              Are you sure you want to mark this job description as inactive? This action cannot be undone.
+            </p>
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={() => {
+                  setIsDeleteConfirmOpen(false);
+                  setJobToDelete(null);
+                }}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteConfirm}
+                disabled={isSubmitting}
+                className="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 disabled:opacity-50"
+              >
+                {isSubmitting ? 'Processing...' : 'Mark as Inactive'}
+              </button>
             </div>
           </div>
         </div>
@@ -457,9 +455,9 @@ const JobDescriptions: React.FC = () => {
                 <div className="flex-1">
                   <div className="flex items-center space-x-2">
                     <h2 className="text-xl font-semibold text-gray-900">{jd.title}</h2>
-                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(jd.status)}`}>
-                      {getStatusIcon(jd.status)}
-                      <span className="ml-1 capitalize">{jd.status}</span>
+                    <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(jd.status, jd.isActive)}`}>
+                      {getStatusIcon(jd.status, jd.isActive)}
+                      <span className="ml-1 capitalize">{jd.isActive ? jd.status : 'Inactive'}</span>
                     </span>
                   </div>
                   <div className="mt-2 flex items-center text-sm text-gray-500">
@@ -533,23 +531,27 @@ const JobDescriptions: React.FC = () => {
                     <Eye className="h-5 w-5 mr-1" />
                     <span className="text-sm">View</span>
                   </Link>
-                  <button
-                    onClick={() => handleEdit(jd)}
-                    className="text-yellow-600 hover:text-yellow-800 flex items-center"
-                    title="Edit"
-                  >
-                    <Pencil className="h-5 w-5 mr-1" />
-                    <span className="text-sm">Edit</span>
-                  </button>
+                  {jd.isActive && (
+                    <>
+                      <button
+                        onClick={() => handleEdit(jd)}
+                        className="text-yellow-600 hover:text-yellow-800 flex items-center"
+                        title="Edit"
+                      >
+                        <Pencil className="h-5 w-5 mr-1" />
+                        <span className="text-sm">Edit</span>
+                      </button>
+                      <button
+                        onClick={() => handleDelete(jd.id)}
+                        className="text-red-600 hover:text-red-800 flex items-center"
+                        title="Delete"
+                      >
+                        <Trash2 className="h-5 w-5 mr-1" />
+                        <span className="text-sm">Delete</span>
+                      </button>
+                    </>
+                  )}
                 </div>
-                <button
-                  onClick={() => handleDelete(jd.id)}
-                  className="text-red-600 hover:text-red-800 flex items-center"
-                  title="Delete"
-                >
-                  <Trash2 className="h-5 w-5 mr-1" />
-                  <span className="text-sm">Delete</span>
-                </button>
               </div>
             </div>
           </div>

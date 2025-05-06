@@ -17,6 +17,7 @@ interface NotificationContextType {
   markAsRead: (id: number) => Promise<void>;
   markAllAsRead: () => Promise<void>;
   createNotification: (title: string, message: string, type: 'success' | 'error' | 'info', jobDescriptionId?: number) => Promise<void>;
+  showNotification: (message: string, type: 'success' | 'error' | 'info') => void;
 }
 
 const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
@@ -83,6 +84,12 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     }
   };
 
+  const showNotification = (message: string, type: 'success' | 'error' | 'info') => {
+    // For now, just log the notification
+    console.log(`[${type.toUpperCase()}] ${message}`);
+    // In a real app, you would show this in a toast or notification component
+  };
+
   useEffect(() => {
     fetchNotifications();
   }, []);
@@ -99,7 +106,8 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
         fetchNotifications,
         markAsRead,
         markAllAsRead,
-        createNotification
+        createNotification,
+        showNotification
       }}
     >
       {children}

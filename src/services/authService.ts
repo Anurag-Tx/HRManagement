@@ -4,17 +4,24 @@ import { User } from '../context/AuthContext';
 const mockUsers = [
   {
     id: "u1",
+    email: "admin@example.com",
+    name: "Admin User",
+    password: "password123",
+    role: "Admin"
+  },
+  {
+    id: "3",
     email: "hr@example.com",
     name: "HR User",
     password: "password123",
-    role: "hr"
+    role: "HR"
   },
   {
-    id: "u2",
+    id: "4",
     email: "manager@example.com",
     name: "Manager User",
     password: "password123",
-    role: "manager"
+    role: "Interviewer"
   }
 ];
 
@@ -48,6 +55,7 @@ export const loginUser = async (email: string, password: string): Promise<User> 
   
   // Return user data without password
   const { password: _, ...userData } = user;
+  console.log('Login successful, user data:', userData);
   return userData as User;
 };
 
@@ -79,6 +87,7 @@ export const registerUser = async (name: string, email: string, password: string
   
   // Return user data without password
   const { password: _, ...userData } = newUser;
+  console.log('Registration successful, user data:', userData);
   return userData as User;
 };
 
@@ -104,6 +113,7 @@ export const checkAuthStatus = async (): Promise<User> => {
   
   // Return user data without password
   const { password: _, ...userData } = user;
+  console.log('Auth status check, user data:', userData);
   return userData as User;
 };
 

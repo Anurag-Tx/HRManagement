@@ -41,4 +41,8 @@ public class JobDescription
     
     [NotMapped]
     public int ReviewedCVs => CVSubmissions?.Count(c => c.Status != "Pending") ?? 0;
+
+    // Add new fields
+    public bool IsActive { get; set; } = true;
+    public DateTime? UpdatedAt { get; set; }
 } 

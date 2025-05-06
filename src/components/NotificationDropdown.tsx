@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Check, FileCheck, FileText, UserCheck } from 'lucide-react';
-import { useNotifications, Notification } from '../context/NotificationContext';
+import { useNotifications } from '../context/NotificationContext';
+import { Notification, NotificationType } from '../services/notificationService';
 import { formatDistanceToNow } from 'date-fns';
 
 interface NotificationDropdownProps {
@@ -9,7 +10,7 @@ interface NotificationDropdownProps {
 }
 
 const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ onClose }) => {
-  const { notifications, markNotificationAsRead, markAllAsRead } = useNotifications();
+  const { notifications, markAsRead, markAllAsRead } = useNotifications();
   const navigate = useNavigate();
 
   const sortedNotifications = useMemo(() => {
@@ -18,13 +19,13 @@ const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ onClose }) 
     );
   }, [notifications]);
 
-  const getNotificationIcon = (type: string) => {
+  const getNotificationIcon = (type: NotificationType) => {
     switch (type) {
-      case 'jd_upload':
+      case 'JD_Created':
         return <FileText className="w-5 h-5 text-blue-500" />;
-      case 'cv_upload':
+      case 'CV_Uploaded':
         return <FileCheck className="w-5 h-5 text-green-500" />;
-      case 'cv_review':
+      case 'CV_Reviewed':
         return <UserCheck className="w-5 h-5 text-orange-500" />;
       default:
         return <FileText className="w-5 h-5 text-gray-500" />;
@@ -33,16 +34,16 @@ const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ onClose }) 
 
   const handleNotificationClick = (notification: Notification) => {
     if (!notification.isRead) {
-      markNotificationAsRead(notification.id);
+      markAsRead(notification.id);
     }
 
     // Navigate based on notification type
-    if (notification.type === 'jd_upload' && notification.relatedId) {
-      navigate(`/job-descriptions/${notification.relatedId}`);
-    } else if (notification.type === 'cv_upload' && notification.relatedId) {
-      navigate(`/cv-review`);
-    } else if (notification.type === 'cv_review' && notification.relatedId) {
-      navigate(`/job-descriptions/${notification.relatedId}`);
+    if (notification.notificationType === 'JD_Created' && notification.jobDescriptionId) {
+      navigate(`/job-descriptions/${notification.jobDescriptionId}`);
+    } else if (notification.notificationType === 'CV_Uploaded' && notification.cvSubmissionId) {
+      navigate(`/cv-review/${notification.cvSubmissionId}`);
+    } else if (notification.notificationType === 'CV_Reviewed' && notification.cvSubmissionId) {
+      navigate(`/cv-review/${notification.cvSubmissionId}`);
     }
 
     onClose();
@@ -90,7 +91,7 @@ const NotificationDropdown: React.FC<NotificationDropdownProps> = ({ onClose }) 
                 >
                   <div className="p-4 flex">
                     <div className="mr-3">
-                      {getNotificationIcon(notification.type)}
+                      {getNotificationIcon(notification.notificationType)}
                     </div>
                     <div className="flex-1">
                       <p className={`text-sm ${notification.isRead ? 'text-gray-600' : 'text-gray-800 font-medium'}`}>

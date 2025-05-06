@@ -77,6 +77,7 @@ export interface JobDescriptionData {
   postedDate: string;
   lastDate?: string;
   status: string;
+  isActive: boolean;
   filePath?: string;
   createdByUserId?: number;
   createdByUser?: {
@@ -176,26 +177,45 @@ export const updateJobDescription = async (
 ): Promise<JobDescriptionData> => {
   try {
     const token = localStorage.getItem('token');
-    // Only send the fields that can be updated
-    const updateData = {
-      title: data.title,
-      description: data.description,
-      requirements: data.requirements,
-      department: data.department,
-      location: data.location,
-      status: data.status,
-      lastDate: data.lastDate
-    };
+    const formData = new FormData();
     
-    const response = await axios.put(`${API_BASE_URL}/api/JobDescription/${id}`, updateData, {
+    // Include the ID in the JobDescription model
+    formData.append('Id', id.toString());
+    
+    // Append only the fields that are being updated
+    if (data.title) formData.append('Title', data.title);
+    if (data.description) formData.append('Description', data.description);
+    if (data.requirements) formData.append('Requirements', data.requirements || '');
+    if (data.department) formData.append('Department', data.department || '');
+    if (data.location) formData.append('Location', data.location || '');
+    if (data.status) formData.append('Status', data.status);
+    if (data.lastDate) formData.append('LastDate', data.lastDate || '');
+    if (data.client) formData.append('Client', data.client || '');
+    
+    const response = await axios.put(`${API_BASE_URL}/api/JobDescription/${id}`, formData, {
       headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data'
       }
     });
     return response.data;
   } catch (error) {
     console.error('Error updating job description:', error);
+    throw error;
+  }
+};
+
+export const markJobDescriptionInactive = async (id: number): Promise<JobDescriptionData> => {
+  try {
+    const token = localStorage.getItem('token');
+    const response = await axios.delete(`${API_BASE_URL}/api/JobDescription/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error marking job description as inactive:', error);
     throw error;
   }
 }; 

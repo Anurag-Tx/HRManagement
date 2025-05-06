@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using JDPortal.Data;
 using JDPortal.Models;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.OpenApi.Writers;
 
 namespace JDPortal.Controllers;
 
@@ -12,22 +14,38 @@ namespace JDPortal.Controllers;
 public class NotificationController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
+    private readonly IMemoryCache _cache;
+    private const string CACHE_KEY_PREFIX = "notifications_";
+    private const int CACHE_DURATION_MINUTES = 5;
 
-    public NotificationController(ApplicationDbContext context)
+    public NotificationController(ApplicationDbContext context, IMemoryCache cache)
     {
         _context = context;
+        _cache = cache;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Notification>>> GetUserNotifications()
+    public async Task<ActionResult<IEnumerable<Notification>>> GetUserNotifications([FromQuery] int userId)
     {
-        var userId = 4;
-        return await _context.Notifications
-            .Include(n => n.JobDescription)
-            .Include(n => n.CVSubmission)
-            .Where(n => n.UserId == userId)
-            .OrderByDescending(n => n.CreatedDate)
+        if (userId <= 0)
+        {
+            return BadRequest("UserId and role are required");
+        }
+        var result = await _context.Notifications
+              .Include(n => n.JobDescription)
+              .Include(n => n.CVSubmission)
+              .Where(n =>!n.IsRead && n.IsActive)
+              .OrderByDescending(n => n.CreatedDate)
+              .Select(n => new
+              {
+                  n.Id,
+                  n.NotificationType,
+                  n.Title,
+                  n.Message,
+                  Date = n.CreatedDate.ToString("yyyy-MM-dd HH:mm:ss")
+              })
             .ToListAsync();
+        return Ok(result);
     }
 
     [HttpGet("unread")]
@@ -37,17 +55,17 @@ public class NotificationController : ControllerBase
         return await _context.Notifications
             .Include(n => n.JobDescription)
             .Include(n => n.CVSubmission)
-            .Where(n => n.UserId == userId && !n.IsRead)
-            .OrderByDescending(n => n.CreatedDate)
+            .Where(n => n.UserId == userId && !n.IsRead && n.IsActive)
+            .OrderByDescending(n => n.CreatedAt)
             .ToListAsync();
+
     }
 
     [HttpPut("{id}/read")]
     public async Task<IActionResult> MarkAsRead(int id)
     {
-        //var userId = 4;
         var notification = await _context.Notifications
-            .FirstOrDefaultAsync(n => n.Id == id);
+            .FirstOrDefaultAsync(n => n.Id == id && n.IsActive);
 
         if (notification == null)
         {
@@ -55,6 +73,7 @@ public class NotificationController : ControllerBase
         }
 
         notification.IsRead = true;
+        notification.UpdatedAt = DateTime.UtcNow;
         await _context.SaveChangesAsync();
 
         return NoContent();
@@ -65,15 +84,16 @@ public class NotificationController : ControllerBase
     {
         var userId = int.Parse(User.FindFirst("sub")?.Value);
         var unreadNotifications = await _context.Notifications
-            .Where(n => n.UserId == userId && !n.IsRead)
+            .Where(n => n.UserId == userId && !n.IsRead && n.IsActive)
             .ToListAsync();
 
         foreach (var notification in unreadNotifications)
         {
             notification.IsRead = true;
+            notification.UpdatedAt = DateTime.UtcNow;
         }
 
         await _context.SaveChangesAsync();
         return NoContent();
     }
-} 
+}

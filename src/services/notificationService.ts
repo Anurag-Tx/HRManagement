@@ -22,7 +22,13 @@ export interface Notification {
 
 export const getNotifications = async (): Promise<Notification[]> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/Notification`, {
+    const userId = localStorage.getItem('userId');
+    
+    if (!userId) {
+      throw new Error('User ID not found');
+    }
+
+    const response = await fetch(`${API_BASE_URL}/Notification?userId=${userId}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
@@ -35,19 +41,8 @@ export const getNotifications = async (): Promise<Notification[]> => {
 
     const notifications = await response.json();
     
-    // Filter notifications based on user role
-    const userRole = localStorage.getItem('userRole');
-    const filteredNotifications = notifications.filter((notification: Notification) => {
-      if (userRole === '3') { // HR
-        return notification.createdByUser.role === '4'; // Only show notifications from Manager
-      } else if (userRole === '4') { // Manager
-        return notification.createdByUser.role === '3'; // Only show notifications from HR
-      }
-      return true; // Show all notifications for other roles
-    });
-
     // Format dates
-    return filteredNotifications.map((notification: Notification) => ({
+    return notifications.map((notification: Notification) => ({
       ...notification,
       createdAt: formatDateTime(notification.createdAt)
     }));
@@ -107,7 +102,12 @@ export const markAllNotificationsAsRead = async (): Promise<void> => {
   }
 };
 
-export const createNotification = async (notification: Omit<Notification, 'id' | 'createdAt'>): Promise<Notification> => {
+export const createNotification = async (
+  title: string,
+  message: string,
+  type: 'success' | 'error' | 'info',
+  jobDescriptionId?: number
+): Promise<Notification> => {
   try {
     const response = await fetch(`${API_BASE_URL}/Notification`, {
       method: 'POST',
@@ -115,7 +115,12 @@ export const createNotification = async (notification: Omit<Notification, 'id' |
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(notification)
+      body: JSON.stringify({
+        title,
+        message,
+        notificationType: type === 'success' ? 'JD_Created' : type === 'error' ? 'CV_Uploaded' : 'CV_Reviewed',
+        jobDescriptionId
+      })
     });
 
     if (!response.ok) {

@@ -37,6 +37,7 @@ const CVReview: React.FC = () => {
   const [previewLoading, setPreviewLoading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [previewType, setPreviewType] = useState<'pdf' | 'doc' | 'docx' | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchCV = async () => {
@@ -149,7 +150,11 @@ const CVReview: React.FC = () => {
         status: reviewStatus,
         comments: comments
       });
-      navigate('/cv-submissions');
+      // Show success message and stay on the same page
+      setSuccess('Review submitted successfully');
+      // Clear the form
+      setComments('');
+      setReviewStatus(null);
     } catch (err) {
       setError('Failed to submit review');
       console.error('Error submitting review:', err);
@@ -196,6 +201,18 @@ const CVReview: React.FC = () => {
             Back to CV Submissions
           </Button>
         </div>
+
+        {success && (
+          <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+            {success}
+          </div>
+        )}
+
+        {error && (
+          <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+            {error}
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Candidate Information */}

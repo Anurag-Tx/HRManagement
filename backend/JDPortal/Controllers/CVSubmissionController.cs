@@ -132,8 +132,10 @@ public class CVSubmissionController : ControllerBase
             Title = "New CV Submission",
             Message = $"A new CV has been submitted by {currentUser.UserName} for {jobDescription.Title} position",
             NotificationType = "CV_Uploaded",
-            CreatedDate = DateTime.UtcNow,
-            UserId = (int)jobDescription.CreatedByUserId,
+            CreatedAt = DateTime.UtcNow,
+            IsActive = true,
+            UserId = currentUser.Id,
+            IsRead = false,
             JobDescriptionId = jobDescriptionId,
             CVSubmissionId = newSubmission.Id
         };

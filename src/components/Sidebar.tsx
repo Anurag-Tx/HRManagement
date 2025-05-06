@@ -9,14 +9,18 @@ import {
   User,
   PlusCircle,
   FileUp,
-  Calendar
+  Calendar,
+  BarChart2
 } from 'lucide-react';
 
 const Sidebar: React.FC = () => {
   const { user } = useAuth();
   const location = useLocation();
-  const isHR = user?.role === 'hr';
-  const isManager = user?.role === 'manager';
+  const isHR = user?.role === 'HR';
+  const isManager = user?.role === 'Interviewer';
+  const isAdmin = user?.role === 'Admin';
+
+  if (!user) return null;
 
   return (
     <div className="bg-white h-full w-64 fixed left-0 top-0 shadow-lg">
@@ -48,26 +52,39 @@ const Sidebar: React.FC = () => {
             Dashboard
           </Link>
 
-          <Link
-            to="/job-descriptions"
-            className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
-              location.pathname === '/job-descriptions' ? 'bg-gray-100' : ''
-            }`}
-          >
-            <FileText className="h-5 w-5 mr-3" />
-            Job Descriptions
-          </Link>
-
-          {isManager && (
+          {!isAdmin && (
             <Link
-              to="/job-descriptions/new"
+              to="/job-descriptions"
               className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
-                location.pathname === '/job-descriptions/new' ? 'bg-gray-100' : ''
+                location.pathname === '/job-descriptions' ? 'bg-gray-100' : ''
               }`}
             >
-              <PlusCircle className="h-5 w-5 mr-3" />
-              Create New JD
+              <FileText className="h-5 w-5 mr-3" />
+              Job Description
             </Link>
+          )}
+
+          {isManager && (
+            <>
+              <Link
+                to="/job-descriptions/new"
+                className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
+                  location.pathname === '/job-descriptions/new' ? 'bg-gray-100' : ''
+                }`}
+              >
+                <PlusCircle className="h-5 w-5 mr-3" />
+                Create JD
+              </Link>
+              <Link
+                to="/cv-review"
+                className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
+                  location.pathname === '/cv-review' ? 'bg-gray-100' : ''
+                }`}
+              >
+                <UserCheck className="h-5 w-5 mr-3" />
+                Review CV
+              </Link>
+            </>
           )}
 
           {isHR && (
@@ -79,7 +96,7 @@ const Sidebar: React.FC = () => {
                 }`}
               >
                 <FileUp className="h-5 w-5 mr-3" />
-                Submit CV
+                Upload CV
               </Link>
               <Link
                 to="/interview-status"
@@ -89,6 +106,43 @@ const Sidebar: React.FC = () => {
               >
                 <Calendar className="h-5 w-5 mr-3" />
                 Interview Status
+              </Link>
+            </>
+          )}
+
+          {isAdmin && (
+            <>
+              <div className="pt-4 pb-2">
+                <h3 className="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  Reports
+                </h3>
+              </div>
+              <Link
+                to="/reports/jd-list"
+                className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
+                  location.pathname === '/reports/jd-list' ? 'bg-gray-100' : ''
+                }`}
+              >
+                <FileText className="h-5 w-5 mr-3" />
+                JD List
+              </Link>
+              <Link
+                to="/reports/cv-list"
+                className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
+                  location.pathname === '/reports/cv-list' ? 'bg-gray-100' : ''
+                }`}
+              >
+                <UserCheck className="h-5 w-5 mr-3" />
+                CV List
+              </Link>
+              <Link
+                to="/reports/interview-status"
+                className={`flex items-center px-4 py-2 text-gray-700 rounded-lg hover:bg-gray-100 ${
+                  location.pathname === '/reports/interview-status' ? 'bg-gray-100' : ''
+                }`}
+              >
+                <Calendar className="h-5 w-5 mr-3" />
+                Interview List with Status
               </Link>
             </>
           )}

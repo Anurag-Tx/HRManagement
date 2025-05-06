@@ -28,4 +28,9 @@ public class Notification
     
     public int? CVSubmissionId { get; set; }
     public CVSubmission CVSubmission { get; set; }
+
+    //// Add new columns
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime? UpdatedAt { get; set; }
+    public bool IsActive { get; set; } = true;
 } 

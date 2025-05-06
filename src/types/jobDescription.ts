@@ -7,6 +7,7 @@ export interface JobDescription {
   requirements: string;
   postedDate: string;
   status: string;
+  isActive: boolean;
   filePath: string;
   createdByUserId: number;
   createdByUser: {

@@ -16,7 +16,7 @@ const CVSubmissionPage: React.FC = () => {
   const [candidateDetails, setCandidateDetails] = useState<Record<string, { name: string; email: string }>>({});
 
   useEffect(() => {
-    if (user?.role === 'hr') {
+    if (user?.role === 'HR') {
       fetchData();
     }
   }, [user]);
@@ -135,7 +135,7 @@ const CVSubmissionPage: React.FC = () => {
       .slice(0, 4);
   };
 
-  if (user?.role !== 'hr') {
+  if (user?.role !== 'HR') {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center p-8 bg-white rounded-xl shadow-lg max-w-md w-full">

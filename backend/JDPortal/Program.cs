@@ -76,6 +76,9 @@ builder.Services.AddCors(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add Memory Cache
+builder.Services.AddMemoryCache();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -161,5 +164,8 @@ using (var scope = app.Services.CreateScope())
             await userManager.AddToRoleAsync(manager, "Manager");
         }
     }
+
+    // Initialize database with interviewers
+    await DbInitializer.Initialize(scope.ServiceProvider);
 }
 app.Run();

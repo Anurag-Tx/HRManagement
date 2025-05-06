@@ -1,11 +1,11 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { loginUser, registerUser, checkAuthStatus, logoutUser } from '../services/authService';
 
-interface User {
+export interface User {
   id: string;
   email: string;
   name: string;
-  role: string; // 'hr' or 'manager'
+  role: 'Admin' | 'HR' | 'Interviewer';
 }
 
 interface AuthContextType {
@@ -41,8 +41,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const checkAuth = async () => {
       try {
         const userData = await checkAuthStatus();
+        console.log('Auth status check:', userData);
         setUser(userData);
+        // Store userId and userRole for notifications
+        if (userData) {
+          localStorage.setItem('userId', userData.id);
+          localStorage.setItem('userRole', userData.role);
+        }
       } catch (err) {
+        console.error('Auth status check failed:', err);
         setUser(null);
       } finally {
         setLoading(false);
@@ -57,8 +64,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(true);
       setError(null);
       const userData = await loginUser(email, password);
+      console.log('Login successful:', userData);
       setUser(userData);
+      // Store userId and userRole for notifications
+      if (userData) {
+        localStorage.setItem('userId', userData.id);
+        localStorage.setItem('userRole', userData.role);
+      }
     } catch (err) {
+      console.error('Login failed:', err);
       setError(err instanceof Error ? err.message : 'Login failed');
       throw err;
     } finally {
@@ -71,8 +85,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(true);
       setError(null);
       const userData = await registerUser(name, email, password, role);
+      console.log('Registration successful:', userData);
       setUser(userData);
     } catch (err) {
+      console.error('Registration failed:', err);
       setError(err instanceof Error ? err.message : 'Registration failed');
       throw err;
     } finally {
@@ -85,7 +101,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(true);
       await logoutUser();
       setUser(null);
+      // Clear userId and userRole
+      localStorage.removeItem('userId');
+      localStorage.removeItem('userRole');
     } catch (err) {
+      console.error('Logout failed:', err);
       setError(err instanceof Error ? err.message : 'Logout failed');
     } finally {
       setLoading(false);

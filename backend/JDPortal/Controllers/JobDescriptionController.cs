@@ -37,6 +37,7 @@ public class JobDescriptionController : ControllerBase
         return await _context.JobDescriptions
             .Include(j => j.CreatedByUser)
             .Include(j => j.CVSubmissions)
+            .Where(j => j.IsActive)
             .OrderByDescending(j => j.PostedDate)
             .Take(5)
             .ToListAsync();
@@ -78,6 +79,15 @@ public class JobDescriptionController : ControllerBase
     // [Authorize(Roles = "Manager")]
     public async Task<ActionResult<JobDescription>> CreateJobDescription(IFormFile? file, [FromForm] JobDescription jobDescription)
     {
+        // Use fixed manager ID for testing
+        var managerId = 4; // Fixed manager ID
+        var currentUser = await _context.Users.FindAsync(managerId);
+
+        if (currentUser == null)
+        {
+            return BadRequest("Manager user not found");
+        }
+
         if (file != null && file.Length > 0)
         {
             // Validate file format
@@ -111,25 +121,10 @@ public class JobDescriptionController : ControllerBase
             jobDescription.FilePath = $"/uploads/jds/{fileName}";
         }
 
-        // Use fixed manager ID for testing
-        var managerId = 4; // Fixed manager ID
-        var currentUser = await _context.Users.FindAsync(managerId);
-        
-        if (currentUser == null)
-        {
-            return BadRequest("Manager user not found");
-        }
-
-        // Initialize the job description with required fields
+        jobDescription.IsActive = true;
         jobDescription.PostedDate = DateTime.UtcNow;
-        jobDescription.Status = "Active";
-        jobDescription.CVSubmissions = new List<CVSubmission>();
-        jobDescription.CreatedByUserId = managerId;
-        jobDescription.CreatedByUser = currentUser;
-
         _context.JobDescriptions.Add(jobDescription);
         await _context.SaveChangesAsync();
-
         // Create notification for HR users
         var hrUsers = await _context.Users.Where(u => u.Role == "HR").ToListAsync();
         foreach (var hrUser in hrUsers)
@@ -139,15 +134,15 @@ public class JobDescriptionController : ControllerBase
                 Title = "New Job Description Posted",
                 Message = $"A new job description '{jobDescription.Title}' has been posted by {currentUser.UserName}.",
                 NotificationType = "JD_Created",
-                CreatedDate = DateTime.UtcNow,
+                CreatedAt = DateTime.UtcNow,
+                IsActive = true,
                 IsRead = false,
-                UserId = hrUser.Id,
+                UserId = currentUser.Id,
                 JobDescriptionId = jobDescription.Id
             };
             _context.Notifications.Add(notification);
         }
         await _context.SaveChangesAsync();
-
         return CreatedAtAction(nameof(GetJobDescription), new { id = jobDescription.Id }, jobDescription);
     }
 
@@ -155,10 +150,6 @@ public class JobDescriptionController : ControllerBase
     // [Authorize(Roles = "Manager")]
     public async Task<IActionResult> UpdateJobDescription(int id, IFormFile? file, [FromForm] JobDescription jobDescription)
     {
-        if (id != jobDescription.Id)
-        {
-            return BadRequest();
-        }
 
         var existingJobDescription = await _context.JobDescriptions.FindAsync(id);
         if (existingJobDescription == null)
@@ -204,23 +195,9 @@ public class JobDescriptionController : ControllerBase
             jobDescription.FilePath = existingJobDescription.FilePath;
         }
 
+        jobDescription.UpdatedAt = DateTime.UtcNow;
         _context.Entry(existingJobDescription).CurrentValues.SetValues(jobDescription);
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!JobDescriptionExists(id))
-            {
-                return NotFound();
-            }
-            else
-            {
-                throw;
-            }
-        }
+        await _context.SaveChangesAsync();
 
         return NoContent();
     }
@@ -235,47 +212,17 @@ public class JobDescriptionController : ControllerBase
     // [Authorize(Roles = "Manager")]
     public async Task<IActionResult> DeleteJobDescription(int id)
     {
-        var jobDescription = await _context.JobDescriptions
-            .Include(j => j.CVSubmissions)
-                .ThenInclude(c => c.Notifications)
-            .FirstOrDefaultAsync(j => j.Id == id);
-
+        var jobDescription = await _context.JobDescriptions.FindAsync(id);
         if (jobDescription == null)
         {
             return NotFound();
         }
 
-        // Use fixed manager ID for testing
-        var managerId = 4; // Fixed manager ID
-        if (jobDescription.CreatedByUserId != managerId)
-        {
-            return Unauthorized("You can only delete job descriptions you created");
-        }
-
-        // Delete associated notifications for each CV submission
-        foreach (var cvSubmission in jobDescription.CVSubmissions ?? Enumerable.Empty<CVSubmission>())
-        {
-            if (cvSubmission.Notifications != null)
-            {
-                _context.Notifications.RemoveRange(cvSubmission.Notifications);
-            }
-        }
-
-        // Delete associated CV submissions
-        if (jobDescription.CVSubmissions != null)
-        {
-            _context.CVSubmissions.RemoveRange(jobDescription.CVSubmissions);
-        }
-
-        // Delete the job description
-        _context.JobDescriptions.Remove(jobDescription);
+        // Soft delete
+        jobDescription.IsActive = false;
+        jobDescription.UpdatedAt = DateTime.UtcNow;
         await _context.SaveChangesAsync();
 
         return NoContent();
-    }
-
-    private bool JobDescriptionExists(int id)
-    {
-        return _context.JobDescriptions.Any(e => e.Id == id);
     }
 } 
